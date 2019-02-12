@@ -85,7 +85,8 @@ class CategoryController extends Controller
         $category = Category::find($id);       
         $category->name = $request->name;
         $category->save();
-        return redirect()->back();
+        //return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -95,7 +96,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+        $category = Category::find($id);
+        $category->delete(); 
+        return redirect()->route('category.index');
     }
 }
