@@ -1,0 +1,185 @@
+Active a Project from terminal
+php artisan serve
+
+View 
+return view('index'); //for main folder of view
+return view('admin.posts.create'); //for subfolders of view
+
+Step 1
+Route
+php artisan route:list to see all routes
+{{laravel}}\routes
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/todos', [
+	'uses' => 'TodosController@index', //Controller Name @ Method
+	'as' => 'todos'
+]);
+Route::get('/home', 'HomeController@index')->name('home');
+Route Group
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+    //middleware if nidded
+    Route::get('/post/create', [
+        'uses' => 'PostController@create',
+        'as' => 'post.create'
+    ]);
+
+    Route::post('/post/store', [
+        'uses' => 'PostController@store',
+        'as' => 'post.store'
+    ]);    
+});
+
+
+Step 1.2
+php artisan make:controller TodosController
+php artisan make:controller TodosController --resource
+{{laravel}}\app\Http\Controllers
+class TodosController extends Controller
+{
+	//Example 1
+    public function index () {
+		//We can do anything here like echo "Echo some data";
+    	return view('index');
+    }
+}
+use App\ModalName inside Controller to communicate with data base example 
+\app\Http\Controllers\TodosController.php
+
+Model
+php artisan make:model Todo -m
+\app a model will be created here
+\database\migrations a migration file will be created here, where we can create the blue print of table inside the up function
+    public function up()
+    {
+        Schema::create('todos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('todo');
+            $table->boolean('completed')->default(0);
+            $table->timestamps();
+        });
+    }
+php artisan migrate 
+to migrate all tables	
+
+Database Relationship
+On modal
+Example 1
+class Category extends Model
+{
+    public function posts()
+    {
+        return $this -> hasMany('App\Post');
+        //A category can have many posts
+    }    
+}
+Example 2
+class Post extends Model
+{
+    public function category()
+    {
+        return $this -> belongsto('App\Category');
+        //A post can have only one category
+    }   
+}
+
+Seeding
+\database\factories
+
+use Faker\Generator as Faker;
+$factory->define(App\User::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'email_verified_at' => now(),
+        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'remember_token' => str_random(10),
+    ];
+});
+$factory->define(App\Todo::class, function (Faker $faker) {
+    return [
+        'todo' => $faker->sentence(10)
+    ];
+});
+details: https://github.com/fzaninotto/Faker
+Create seeder using php artisan
+php artisan make:seeder TodosTableSeeder
+will create seed on 
+\database\seeds
+	public function run()
+    {
+        factory(App\Todo::class, 7)->create();
+    }
+Run seeder using php artisan
+php artisan db:seed
+
+Layouting
+Main 
+@yield('phrase')
+Child
+@extends('layout')
+@section('content')
+<a href="/todos" class="btn-link">Visit my todos</a>
+@stop or @endsection
+
+Form handling
+On blade
+<form action="{{ route('post.store') }}" method="post">
+<form action="/create/todo" method="post">
+	{{csrf_field()}}
+	<input name="todo" type="text" class="form-control" placeholder="Create a new todo">	
+</form>
+<form action="{{route('todo.save', ['id' =>  $todo->id])}}" method="post">
+	{{csrf_field()}}
+	<input name="todo" type="text" class="form-control" value="{{$todo -> todo}}">	
+</form>
+
+On Route
+Route::post('/create/todo', [
+	'uses' => 'TodosController@store'
+]);
+Route::post('/update-save/todo/{id}', [
+	'uses' => 'TodosController@save',
+	'as' => 'todo.save'
+]);
+
+On Controller
+    //for new save
+    public function store(Request $request)
+    {
+    	//dd($request);
+    	//dd($request->all());
+    	$todo = new Todo;
+    	$todo->todo = $request->todo;
+    	$todo->save();
+        Session :: flash('success', 'Your todo is created.');
+    	return redirect()->back();
+    }
+	
+
+Authentication 
+php artisan make:auth
+\resources\views\auth
+Login, Register and Verify blade template
+\resources\views
+Home blade template
+
+
+@if(Auth::check())
+Do something
+@endif
+
+Middleware
+Can be use as Route Group 1st perameter like 'middleware' => 'auth'
+Can use inside Controllers __construct() $this->middleware('auth'). Example HomeController.php
+\app\Http\Middleware
+
+Validation
+On Controller's method
+$this->validate($request, [
+            'title' => 'required|max:255',
+            'feture' => 'required|image',
+            'content' => 'required',            
+        ]);
+On Form page
