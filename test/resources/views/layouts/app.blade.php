@@ -79,7 +79,13 @@
                    <div class="col-md-4">
                        <ul class="list-group">
                            <li class="list-group-item">
-                               <a href="/home">Dashboard</a>
+                               <a href="{{ route('home') }}">Dashboard</a>
+                           </li>
+                           <li class="list-group-item">
+                               <a href="{{ route('category.index') }}">Categories</a>
+                           </li>
+                           <li class="list-group-item">
+                               <a href="{{ route('category.create') }}">Create new category</a>
                            </li>
                            <li class="list-group-item">
                                <a href="{{ route('post.create') }}">Create new post</a>
