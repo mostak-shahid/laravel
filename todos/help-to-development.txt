@@ -156,7 +156,13 @@ On Controller
         Session :: flash('success', 'Your todo is created.');
     	return redirect()->back();
     }
-	
+
+	$post = Post::create([
+		'title' => $request->title,
+		'content' => $request->content,
+		'category_id' => $request->category_id,
+		'feature' => 'uploads/posts/' . $request->feature_new_name,
+	]);	
 
 Authentication 
 php artisan make:auth
@@ -183,3 +189,14 @@ $this->validate($request, [
             'content' => 'required',            
         ]);
 On Form page
+                    @if(count($errors)>0)
+                        <ul class="list-group py-4">
+                            @foreach($errors->all() as $error)
+                            <li class="list-group-item text-danger">{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+
+For using session on controller
+use Session;

@@ -91,18 +91,8 @@
          </ul>
        </div>
        @endif
-       <div class="col-md-8">
-
-        @if(Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          {{ Session::get('success') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        @endif
+       <div class="col-md-8">       
         @yield('content')
-
       </div>
     </div>
   </div>
@@ -114,7 +104,9 @@
   <script src="{{ asset('js/toastr.min.js') }}"></script>
   <script>
     jQuery(document).ready(function($) {
-      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
+      @if(Session::has('success'))
+      toastr.success('{{ Session::get('success') }}')
+      @endif
     });    
   </script>
 
