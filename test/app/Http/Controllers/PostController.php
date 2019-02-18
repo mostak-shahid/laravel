@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Category;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -51,7 +52,7 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'feature' => 'uploads/posts/' . $request->feature_new_name,
         ]);
-        Session::flash('success', 'Post created successfully.');
+        Session::flash('success', 'Post created successfully.'); 
         // dd($request -> all());
     }
 
