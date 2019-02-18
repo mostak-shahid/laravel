@@ -110,7 +110,13 @@
 </div>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/toastr.min.js') }}"></script>
+  <script>
+    jQuery(document).ready(function($) {
+      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
+    });    
+  </script>
 
 </body>
 </html>
