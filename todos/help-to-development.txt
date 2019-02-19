@@ -200,3 +200,14 @@ On Form page
 
 For using session on controller
 use Session;
+
+Mass assignable on model
+protected $fillable = [
+	'name', 'email', 'password',
+];
+
+Softdelete, Acessors
+	Need to study
+	
+Helping functions
+str_slug($request->title)

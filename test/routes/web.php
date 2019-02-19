@@ -26,17 +26,49 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
-
+    
+    Route::get('/posts', [
+        'uses' => 'PostController@index',
+        'as' => 'posts'
+    ]); 
     
     Route::get('/post/create', [
         'uses' => 'PostController@create',
         'as' => 'post.create'
+    ]); 
+    
+    Route::get('/post/edit/{id}', [
+        'uses' => 'PostController@edit',
+        'as' => 'post.edit'
+    ]);
+    
+    Route::post('/post/update/{id}', [
+        'uses' => 'PostController@update',
+        'as' => 'post.update'
+    ]); 
+
+    Route::get('/posts/trashed', [
+        'uses' => 'PostController@trashed',
+        'as' => 'posts.trashed'
+    ]);   
+    Route::get('/post/kill/{id}', [
+        'uses' => 'PostController@kill',
+        'as' => 'post.kill'
+    ]);
+    Route::get('/post/restore/{id}', [
+        'uses' => 'PostController@restore',
+        'as' => 'post.restore'
     ]);
 
     Route::post('/post/store', [
         'uses' => 'PostController@store',
         'as' => 'post.store'
     ]); 
+    
+    Route::get('/post/delete/{id}', [
+        'uses' => 'PostController@destroy',
+        'as' => 'post.delete'
+    ]);
     
     Route::get('/categories', [
         'uses' => 'CategoryController@index',

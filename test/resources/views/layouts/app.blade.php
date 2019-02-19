@@ -86,7 +86,13 @@
              <a href="{{ route('category.create') }}">Create new category</a>
            </li>
            <li class="list-group-item">
+             <a href="{{ route('posts') }}">All Posts</a>
+           </li>
+           <li class="list-group-item">
              <a href="{{ route('post.create') }}">Create new post</a>
+           </li>
+           <li class="list-group-item">
+             <a href="{{ route('posts.trashed') }}">Trashed Posts</a>
            </li>
          </ul>
        </div>
@@ -106,6 +112,9 @@
     jQuery(document).ready(function($) {
       @if(Session::has('success'))
       toastr.success('{{ Session::get('success') }}')
+      @endif
+      @if(Session::has('info'))
+      toastr.info('{{ Session::get('info') }}')
       @endif
     });    
   </script>
