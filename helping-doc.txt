@@ -1,0 +1,130 @@
+
+https://packagist.org -> to download composer packages
+
+For starting with a specific version of Laravel
+compeser create-project laravel/laravel project_name 
+compeser create-project laravel/laravel project_name 5.2
+
+Routes
+	Route::get('/', function(){
+		return "Hello World";
+		//this will return the given string
+		return view('welcome');
+		//this will load welcome.blade.php
+	});
+	Route::get('/post/{id}/{slug}', function($id, $slug){
+		return "This is post number " . $id . ", and slug is " . $slug;	
+	});
+	Route::resource('posts', 'PostController');
+	//this will creates a set of routes for crud functionality
+	Route naming
+	Route::get('/admin/post/example/', array('as' => 'admin.post' function(){
+		$url = route();
+		return "this url is " . $url;
+	}));
+	Route::get('/home', 'HomeController@index')->name('home');
+
+Controllers
+	Location
+	App/Http/Controllers
+	Create
+	php artisan make:controller ControllerName
+	//This will create controller without resources
+	php artisan make:controller --resource ControllerName
+	//This will create controller with CRUD functionality
+	Calling
+	Route::get('/home', 'HomeController@index');
+	//Will hit HomeController's index method 
+View 
+	return view('welcome');
+	//return welcome.blade.php from view directory
+	return view('admin.welcome');
+	return view('admin/welcome');
+	//return welcome.blade.php from admin directory of view directory
+	Passing info to view
+	return view('welcome')->with('name', $value);
+	for printing inside view use {{$name}}
+	return view('welcome', compact('id', 'name', 'password'));	
+Model
+	php artisan make:model Todo -m
+	if class name is different from tale name
+	protected $table = 'table_name';
+	protected $primaryKey = 'column_name';
+Blade
+	Main 
+	@yield('content')
+	Child
+	@extends('layout')
+	@section('content')
+	<a href="/todos" class="btn-link">Visit my todos</a>
+	@stop or @endsection
+	
+Migration
+	Location
+	database/migrations
+	Create
+	php artisan make:migration create_posts_table --create="posts"
+	//last flug will creates the table
+	Run Migration 
+	php artisan migrate
+	for resetting the last
+	php artisan migrate:rollback
+	for resetting all
+	php artisan migrate:refresh
+	for Deleting
+	php artisan migrate:reset
+	Adding Column to a table
+	php artisan make:migration add_field_name_to_table_name --table="tableName"
+Database Raw
+	DB::insert(query string)
+	DB::insert('insert into table_name(col1, col2 values(?,?))', ['value 1','Value 2']);
+	$results = DB::select('select * from posts where id = ?', [1]);
+	$update = DB::update('update posts set title = "Update title" where id = ?', [1]);
+	$delete = DB::delete('delete from posts where id = ?', [1]);
+Database Eloquent ORM
+	use ModalName
+	$post = Post::find(2);
+	$post = Post::findOrFail(2);
+	$post = Post::where('id', 2);
+	$post = Post::where('id', '=', 2);
+	$post = Post::where('id', 2)->orderBy('id', 'desc');
+	$post = Post::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
+	Save method(insert)
+	$todo = new Todo;
+	$todo->todo = $request->todo;
+	$todo->save();
+	Save method(update)	
+	$todo = Todo::find(1);
+	$todo->todo = $request->todo;
+	$todo->save();
+	$todo = Todo::find(1);
+	$todo->delete();
+	for using create method $fillable property need to assign on modal
+	Post::create([
+		'title' => 'A string value',
+		'content' => 'A long string value'
+	]);
+	Post::where('id', 2)->where('col_name', 'value')->update([
+		'title' => 'A string value',
+		'content' => 'A long string value'
+	]);
+	Post::destroy(1);
+	Post::destroy([4,5]);
+Soft delete
+	On modal outside class
+	use Illuminate\Database\Eloquent\SoftDeletes;
+	On modal inside class
+	use SoftDeletes;
+	protected $dates = [deleted_at];
+	On Migrate file inside up function
+	$table->softDeletes();
+	On Migrate file inside down function
+	$table->dropColumn('deleted_at');
+Need to learn
+	namespace, use, Schema
+	
+10. Laravel Fundamentals - Database - Eloquent   ORM/9. Soft Deleting  Trashing.mp4
+	
+Tips
+	Double press shift key to search files
+	CTRL + Click to get the function or class source
