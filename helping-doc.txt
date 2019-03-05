@@ -120,11 +120,33 @@ Soft delete
 	$table->softDeletes();
 	On Migrate file inside down function
 	$table->dropColumn('deleted_at');
-Need to learn
-	namespace, use, Schema
+Get Softdelete Data
+	Post::withTrashed()->where('id', 1)->get();
+	Post::withTrashed()->get();
+	Post::onlyTrashed()->get();
+Soft delete Recovary
+	Post::withTrashed()->where('id', 1)->restore();
+Force delete
+	Post::withTrashed()->where('id', 1)->forceDelete();
 	
-10. Laravel Fundamentals - Database - Eloquent   ORM/9. Soft Deleting  Trashing.mp4
+Database relationship
+	One to One
+	hasOne()
+	brlongsTo()
+	One to Many
+	hasMany()
+	brlongsToMany()
+	hasManyThrough()
+	
+
+	
+Need to learn
+	namespace, use, Schema, Intermediate / pivet table
+	
 	
 Tips
 	Double press shift key to search files
 	CTRL + Click to get the function or class source
+	
+	
+10. Laravel Fundamentals - Database - Eloquent   ORM/9. Soft Deleting  Trashing.mp4
