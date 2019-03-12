@@ -139,6 +139,8 @@ Database relationship
 	hasManyThrough()
 	morphTo()
 	morphMany()
+	morphToMany()
+	morphByMany()
 	
 
 	
