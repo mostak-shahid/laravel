@@ -1,4 +1,4 @@
-https://laracasts.com/series/laravel-from-scratch-2018/episodes/8
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/9
 Artisan Commands
 	TIps
 	* Before using any command use help
@@ -31,3 +31,5 @@ Artisan Commands
 		$project->title = 'My first project';
 		$project->description = 'Lorem ipsum';
 		$project->save();
+		
+	Form Handling
