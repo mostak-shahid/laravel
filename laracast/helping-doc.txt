@@ -1,0 +1,33 @@
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/8
+Artisan Commands
+	TIps
+	* Before using any command use help
+		php artisan help make:controller
+	
+	Make (This will create files)
+	1. php artisan make:controller PagesController
+	2. php artisan make:controller PagesController --resource 
+		*It will create some basic methods
+	3. php artisan make:model Project
+	4. php artisan make:migration create_projects_table
+	
+	Migrating Tables
+	1. php artisan migrate
+	2. php artisan migrate:rollback
+	2. php artisan migrate:fresh
+	
+	Tinker
+	php artisan tinker
+	exit
+	1. Getting Data
+		App\Project::all();
+		App\Project::all()[0];
+		App\Project::all()->map->title;
+		App\Project::first();
+		App\Project::first()->title;
+		App\Project::latest()->first();
+	2. Storing Data
+		$project = new App\Project;
+		$project->title = 'My first project';
+		$project->description = 'Lorem ipsum';
+		$project->save();
