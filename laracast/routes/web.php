@@ -51,4 +51,6 @@ Route::get('/contact', 'PagesController@contact');
 // Route::get('/contact', function () {
 //     return view('contact');
 // });
-Route::get('/project', 'ProjectController@index');
+Route::get('/projects', 'ProjectController@index');
+Route::get('/project/create', 'ProjectController@create');
+Route::post('/project/store', 'ProjectController@store');
