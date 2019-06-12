@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Project;
+use App\Task;
 
-class ProjectController extends Controller
+class ProjectTasksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        //return view('projects.index', ['projects' => $projects]);
-        return view('projects.index', compact('projects'));
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        //
     }
 
     /**
@@ -36,19 +35,18 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
-        //dd($request);
-        //dd($request->all());
-        // return request()->all();
-        // return request('title');
-        $project = new Project;
-        // $project->title = request('title');
-        // $project->description = request('description');
-        $project->title = $request->title;
-        $project->description = $request->description;
-        $project->save();
-        return redirect('/projects');
+
+        $validate = request()->validate(['description' => 'required']);
+        $project->addTask($validate);
+        //$project->addTask($request->description);
+        /*Create a method addTask on Project Model*/
+        // Task::create([
+        //     'project_id' => $project->id,
+        //     'description' => $request->description
+        // ]);
+        return back();
     }
 
     /**
@@ -80,9 +78,22 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        // if (request()->has('completed')){
+        //     $task->complete();
+        // }else{
+        //     $task->incomplete();            
+        // }
+        // request()->has('completed')?task->complete():$task->incomplete(); 
+        // $method = request()->has('completed')?'complete':'incomplete';
+        //$task->$method; 
+        $task->complete(request()->has('completed'));
+
+        // $task->update([
+        //     'completed' => request()->has('completed')
+        // ]);
+        return back();
     }
 
     /**

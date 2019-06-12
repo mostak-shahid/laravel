@@ -1,5 +1,6 @@
 https://laracasts.com/series/laravel-from-scratch-2018/episodes/9 {important-lecture_about_files}
 https://laracasts.com/series/laravel-from-scratch-2018/episodes/10
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/19
 Artisan Commands
 	TIps
 	* Before using any command use help

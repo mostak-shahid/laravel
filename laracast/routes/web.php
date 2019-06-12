@@ -51,6 +51,23 @@ Route::get('/contact', 'PagesController@contact');
 // Route::get('/contact', function () {
 //     return view('contact');
 // });
-Route::get('/projects', 'ProjectController@index');
-Route::get('/project/create', 'ProjectController@create');
-Route::post('/project/store', 'ProjectController@store');
+/*
+	GET /projects (index)
+	GET /projects/create (create)
+	POST /projects (store)
+	GET /projects/1 (show)
+	GET /projects/1/edit (edit)
+	PATCH /projects/1 (update)
+	DELETE /projects/1 (destroy)
+*/
+Route::resource('projects','ProjectsController');
+
+// Route::get('/projects', 'ProjectsController@index');
+// Route::post('/projects', 'ProjectsController@store');
+// Route::get('/projects/create', 'ProjectsController@create');
+// Route::get('/projects/{project}', 'ProjectsController@show');
+// Route::patch('/projects/{project}', 'ProjectsController@update');
+// Route::delete('/projects/{project}', 'ProjectsController@destroy');
+// Route::get('/projects/{project}/edit', 'ProjectsController@edit');
+Route::post('/projects/{project}/tasks',  'ProjectTasksController@store');
+Route::patch('/tasks/{task}', 'ProjectTasksController@update');

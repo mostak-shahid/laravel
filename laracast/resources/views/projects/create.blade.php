@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Project</title>
-</head>
-<body>
+@extends('layout')
+@section('title', 'New Project')
+@section('content')
 	<h1>Create a New Project</h1>
-	<form action="/project/store" method="POST">
+	<form action="/projects" method="POST">
 		{{csrf_field()}}
 		<div>
-			<input type="text" name="title" placeholder="Project Title">
+			<input class="{{$errors->has('title')?'is-danger':''}}" type="text" name="title" placeholder="Project Title" required value="{{old('title')}}">
 		</div>
 		<div>
-			<textarea name="description" placeholder="Project Description"></textarea>
+			<textarea class="{{$errors->has('description')?'is-danger':''}}" name="description" placeholder="Project Description">{{old('description')}}</textarea>
 		</div>
 		<div>
 			<button type="submit">Create Project</button>	
 		</div>
 	</form>
-</body>
-</html>
+	@include('errors')
+@endsection
