@@ -76,3 +76,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+//https://www.youtube.com/watch?v=xjLLr4WQWzw
+Route::post('/login/custom',[
+	'uses' => 'LoginController@login',
+	'as' => 'login.custom',
+]);
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/home', function(){
+		return view('home');
+	})->name('home');
+	Route::get('/dashboard', function(){
+		return view('dashboard');
+	})->name('dashboard');
+});

@@ -71,6 +71,12 @@ Artisan Commands
 	session('name', 'default Value');
 	session()->flash('name', 'Value');
 	
+Multi Auth
+	config/auth.php
+		guard
+			
+		provider
+	
 	
 	
 	

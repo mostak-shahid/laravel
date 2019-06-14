@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,5 +41,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
         // return $this->hasMany(Project::class, 'owner_id'); //if user_id changed to owner_id
+    }
+    public function is_admin()
+    {
+        if ($this->admin)
+        {
+            return true;
+        }
+        return false;
     }
 }
