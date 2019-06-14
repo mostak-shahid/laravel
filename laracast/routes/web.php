@@ -71,3 +71,8 @@ Route::resource('projects','ProjectsController');
 // Route::get('/projects/{project}/edit', 'ProjectsController@edit');
 Route::post('/projects/{project}/tasks',  'ProjectTasksController@store');
 Route::patch('/tasks/{task}', 'ProjectTasksController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

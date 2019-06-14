@@ -8,6 +8,13 @@ use App\Project;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('auth')->only(['store','update']);
+        // $this->middleware('auth')->except(['index','show']);
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,13 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = auth()->user()->projects;
+        // auth()->check() //0 or 1
+        // auth()->id(); //0 or user id
+        // auth()->user(); // User class
+        // auth()->guest(); //0 or 1
+        // $projects = Project::where('user_id', auth()->id())->get();
+        // $projects = Project::all();
         //return view('projects.index', ['projects' => $projects]);
         return view('projects.index', compact('projects'));
     }
@@ -57,10 +70,12 @@ class ProjectsController extends Controller
         //     'title' => ['required','min:3'],
         //     'description' => 'required|max:10',
         // ]);
-        $validated = request()->validate([
-            'title' => ['required','min:3'],
-            'description' => 'required|max:10',
-        ]);
+        // $validated = request()->validate([
+        //     'title' => ['required','min:3'],
+        //     'description' => 'required|max:10',
+        // ]);
+        $validated = $this->validateProject();
+        $validate['user_id'] => auth()->id();
         /*This will through a $errors class, if data not validated, we can find those errors on the from page as $errors->all(), $errors->any(), $errors->has('fieldname')
         for more https://laravel.com/docs/5.8/validation#available-validation-rules
         */
@@ -69,7 +84,8 @@ class ProjectsController extends Controller
         //     'description' => $request->description,
         // ]);
         // Project::create(request(['title', 'description']));
-        Project::create($validated);
+         Project::create($validated);
+        //Project::create($validated + ['user_id' => auth()->id()]);
         /*for using create method, a protected property has dicleare in the corresponding modell
         protected $fillable = ['title', 'description'];
         protected $guarded = [] will do the opposite
@@ -90,6 +106,11 @@ class ProjectsController extends Controller
     // }
     public function show(Project $project)
     {
+        // if ($project->user_id !== auth()->id()){
+        //     abort(403);
+        // }
+        // abort_unless ($project->user_id == auth()->id(), 403);
+        abort_if ($project->user_id !== auth()->id(), 403);
         return view('projects.show', compact('project'));
     }
 
@@ -128,15 +149,16 @@ class ProjectsController extends Controller
     public function update(Request $request, Project $project)
     {
         
-        $validated = request()->validate([
-            'title' => ['required','min:3'],
-            'description' => 'required|max:10',
-        ]);
+        // $validated = request()->validate([
+        //     'title' => ['required','min:3'],
+        //     'description' => 'required|max:10',
+        // ]);
         // return request()->all();
         // $project->title = $request->title;
         // $project->description = $request->description;
         // $project->save();
-        $project->update($validated);
+        //$project->update($validated);
+        $project->update($this->validateProject());
         return redirect('/projects');
     }
 
@@ -155,5 +177,12 @@ class ProjectsController extends Controller
     {
         $project->delete();
         return redirect('/projects');
+    }
+    protected function validateProject()
+    {
+        return request()->validate([
+            'title' => ['required','min:3'],
+            'description' => 'required|max:10',
+        ]);
     }
 }

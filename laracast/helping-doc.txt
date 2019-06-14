@@ -1,6 +1,13 @@
-https://laracasts.com/series/laravel-from-scratch-2018/episodes/9 {important-lecture_about_files}
-https://laracasts.com/series/laravel-from-scratch-2018/episodes/10
-https://laracasts.com/series/laravel-from-scratch-2018/episodes/19
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/9 {important-lecture-about-files}
+after 27 every thing is important
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/27 {important-lecture-about-authorization}
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/28 {debug with telescope and email setup}
+skipped
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/21
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/22
+https://laracasts.com/series/laravel-from-scratch-2018/episodes/23
+skipped
+
 Artisan Commands
 	TIps
 	* Before using any command use help
@@ -12,6 +19,10 @@ Artisan Commands
 		*It will create some basic methods
 	3. php artisan make:model Project
 	4. php artisan make:migration create_projects_table
+	5. php artisan make:auth
+	6. php artisan make:policy
+	6. php artisan make:mail
+	6. php artisan make:provider
 	
 	Migrating Tables
 	1. php artisan migrate
@@ -35,3 +46,31 @@ Artisan Commands
 		$project->save();
 		
 	Form Handling
+	
+	Middleware
+	from route
+	Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+	Route::get('/signup', 'HomeController@signup')->name('signup')->middleware('guest');
+		*can be found Kernel -> $routeMiddleware
+	auth()->check() //0 or 1
+	auth()->id(); //0 or user id
+	auth()->user(); // User class
+	auth()->guest(); //0 or 1
+	
+	from Controller
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('auth')->only(['store','update']);
+		$this->middleware('auth')->except(['index','show']);
+		
+	}
+	
+	Session
+	session(['name' => 'Value']);
+	session('name', 'default Value');
+	session()->flash('name', 'Value');
+	
+	
+	
+	
