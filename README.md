@@ -19,3 +19,10 @@
 
 	1. you may need to install and configur **phpmyadmin**. 
 	2. Download phpmyadmin and extract here **laragon\etc\apps**
+###Route
+Route::get('/', 'PagesController@home');
+```
+Route::get('/contact', function () {
+	return view('contact');
+});
+```
