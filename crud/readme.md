@@ -1,3 +1,13 @@
+## Procedure of working
+	1. Start a new laravel projects
+	2. Setup .env file if necessary
+	3. Create necessary migration files
+	4. Create necessary model
+	5. Create routes
+### Tips
+	1. php artisan make:model Pages -crm
+		- This will creates a Model, a Controller with resourses and a migration
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
