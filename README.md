@@ -23,11 +23,13 @@
 ### Route
 ```
 Route::get('/', 'PagesController@home');
-```
-```
 Route::get('/contact', function () {
 	return view('contact');
 });
+Route::post('/login/custom',[
+	'uses' => 'LoginController@login',
+	'as' => 'login.custom',
+]);
 ```
 **Resource**
 ```
