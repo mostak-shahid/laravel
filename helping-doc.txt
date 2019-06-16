@@ -1,4 +1,4 @@
-
+https://getcomposer.org/ -> to donwnload composer
 https://packagist.org -> to download composer packages
 
 For starting with a specific version of Laravel
