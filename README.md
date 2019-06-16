@@ -22,6 +22,12 @@
 	
 ### Route
 **Location** routes/web.php
+
+**Use** 
+
+	1. route('profile');
+	2. route('profile', ['id' => 1]);
+	3. **Example** $url = route('profile', ['id' => 1]); 
 ```
 Route::get('/', 'PagesController@home');
 Route::get('/contact', function () {
