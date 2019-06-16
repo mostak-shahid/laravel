@@ -21,13 +21,15 @@
 	2. Download phpmyadmin and extract here **laragon\etc\apps**
 	
 ### Route
+```
 Route::get('/', 'PagesController@home');
+```
 ```
 Route::get('/contact', function () {
 	return view('contact');
 });
 ```
-*Resource*
+**Resource**
 ```
 Route::resource('projects','ProjectsController');
 
@@ -38,4 +40,23 @@ Route::resource('projects','ProjectsController');
 // Route::patch('/projects/{project}', 'ProjectsController@update');
 // Route::delete('/projects/{project}', 'ProjectsController@destroy');
 // Route::get('/projects/{project}/edit', 'ProjectsController@edit');
+```
+**Available Router Methods**
+```
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+```
+**a route that responds to multiple HTTP verbs**
+```
+Route::match(['get', 'post'], '/', $callback);
+Route::any('/', $callback);
+```
+**View Routes**
+```
+Route::view('/welcome', 'welcome');
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 ```
