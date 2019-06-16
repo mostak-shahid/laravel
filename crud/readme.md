@@ -7,6 +7,8 @@
 ### Tips
 	1. php artisan make:model Pages -crm
 		- This will creates a Model, a Controller with resourses and a migration
+	2. php artisan make:controller PostsController --model=Post
+		- This will creates a Controller with resourses and a Model
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 

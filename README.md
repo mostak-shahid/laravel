@@ -181,6 +181,9 @@ Post::destroy([4,5]);
 	- seeds
 	- middleware
 	- Provider
+	- Route Caching
+		- php artisan route:cache
+		- php artisan route:clear
 ## PhpStorm Tips
 **Tips**
 
