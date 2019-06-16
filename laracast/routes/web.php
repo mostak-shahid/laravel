@@ -87,5 +87,25 @@ Route::group(['middleware' => 'auth'], function(){
 	})->name('home');
 	Route::get('/dashboard', function(){
 		return view('dashboard');
-	})->name('dashboard');
+	})->name('dashboard')->middleware('admin');
+});
+Route::get('{page}', function($slug){
+	$page = \App\Page::findBySlug($slug);
+	// return view('default', compact('page'));
+	// if ($page->slug == 'about-us'){
+	// 	return view('pages.about-us', compact('page'));
+	// }
+	// elseif ($page->slug == 'contact-us'){
+	// 	return view('pages.contact-us', compact('page'));
+	// }
+
+	$view = 'pages.'.$page->slug;	
+	// if (view()->exists($view)){
+	// 	return view($view, compact('page'));
+	// }
+	// return view('default', compact('page'));
+	return view()->first([
+		$view,
+		'default'
+	], compact('page'));
 });
