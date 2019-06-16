@@ -85,6 +85,7 @@ Route::view('/welcome/{name?}', 'welcome');
 		- return welcome.blade.php from view/admin directory
 		
 **Passing info to view**
+
 	1. return view('welcome',['tasks' => $tasks,'foo' => 'Foobar','request' => request('title'),'script' => '<script>alert("Foobar")</script>']);
 	2. return view('welcome', compact('id', 'name', 'password'));
 	3. return view('welcome')->with('name', $value);
