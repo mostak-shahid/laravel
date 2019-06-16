@@ -159,10 +159,14 @@ Post::where('id', 2)->where('col_name', 'value')->update([
 Post::destroy(1);
 Post::destroy([4,5]);
 
-##Still Need to clear
+## Still Need to clear
 	- Soft delete
 	- namespace, use, Schema, Intermediate / pivet table
 	- factories
 	- seeds
 	- middleware
 	- Provider
+## PhpStorm Tips
+Tips
+	- Double press shift key to search files
+	- CTRL + Click to get the function or class source
