@@ -14,6 +14,8 @@
 	2. Install laragon
 	3. Menu > Quick app > Laravel
 	4. Give your desired project name
+	
 **hints**
+
 	1. you may need to install and configur **phpmyadmin**. 
 	2. Download phpmyadmin and extract here **laragon\etc\apps**
