@@ -167,6 +167,7 @@ Post::destroy([4,5]);
 	- middleware
 	- Provider
 ## PhpStorm Tips
-Tips
+**Tips**
+
 	- Double press shift key to search files
 	- CTRL + Click to get the function or class source
