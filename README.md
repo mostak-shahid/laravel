@@ -71,9 +71,11 @@ Route::view('/welcome/{name?}', 'welcome');
 **Location** App/Http/Controllers
 
 **Create** 
+
 	1. php artisan help make:controller
 	2. php artisan make:controller ControllerName
 	3. php artisan make:controller --resource ControllerName 
+	
 ### View
 	1. return view('welcome');
 		- return welcome.blade.php from view directory
