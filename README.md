@@ -128,3 +128,41 @@ Route::view('/welcome/{name?}', 'welcome');
 	3. $results = DB::select('select * from posts where id = ?', [1]);
 	4. $update = DB::update('update posts set title = "Update title" where id = ?', [1]);
 	5. $delete = DB::delete('delete from posts where id = ?', [1]);
+	
+### Database Eloquent ORM
+use ModalName
+$post = Post::find(2);
+$post = Post::findOrFail(2);
+$post = Post::where('id', 2);
+$post = Post::where('id', '=', 2);
+$post = Post::where('id', 2)->orderBy('id', 'desc');
+$post = Post::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
+Save method(insert)
+$todo = new Todo;
+$todo->todo = $request->todo;
+$todo->save();
+Save method(update)	
+$todo = Todo::find(1);
+$todo->todo = $request->todo;
+$todo->save();
+$todo = Todo::find(1);
+$todo->delete();
+for using create method $fillable property need to assign on modal
+Post::create([
+	'title' => 'A string value',
+	'content' => 'A long string value'
+]);
+Post::where('id', 2)->where('col_name', 'value')->update([
+	'title' => 'A string value',
+	'content' => 'A long string value'
+]);
+Post::destroy(1);
+Post::destroy([4,5]);
+
+##Still Need to clear
+	- Soft delete
+	- namespace, use, Schema, Intermediate / pivet table
+	- factories
+	- seeds
+	- middleware
+	- Provider
