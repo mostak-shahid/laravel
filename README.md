@@ -21,6 +21,7 @@
 	2. Download phpmyadmin and extract here **laragon\etc\apps**
 	
 ### Route
+**Location** routes/web.php
 ```
 Route::get('/', 'PagesController@home');
 Route::get('/contact', function () {
@@ -66,3 +67,6 @@ Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 ```
 Route::view('/welcome/{name?}', 'welcome');
 ```
+###Controllers
+**Location** App/Http/Controllers
+**Create** php artisan make:controller ControllerName
