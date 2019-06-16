@@ -102,8 +102,13 @@ Route::view('/welcome/{name?}', 'welcome');
 
 ### Blade
 	1. Main 
-	```@yield('content')```
+	
+	```
+	@yield('content')
+	```
+	
 	2. Child
+	
 	```
 	@extends('layout')
 	@section('content')
