@@ -101,17 +101,30 @@ Route::view('/welcome/{name?}', 'welcome');
 	2. php artisan make:model ModelName
 
 ### Blade
-	1. Main 
-	
-	```
-	@yield('content')
-	```
-	
-	2. Child
-	
-	```
-	@extends('layout')
-	@section('content')
-	<a href="/todos" class="btn-link">Visit my todos</a>
-	@stop or @endsection
-	```
+	1. Main (view/layout.blade.php)
+		- @yield('content')	
+	2. Child (view/slug.blade.php)	
+		- @extends('layout')
+		- @section('content')
+		- <a href="/todos" class="btn-link">Visit my todos</a>
+		- @stop or @endsection
+### Migration
+**Location** database/migrations
+
+**Create** 
+
+	1. php artisan make:migration create_posts_table --create="posts"
+		- last flug will creates the table
+	2. php artisan migrate
+	3. php artisan migrate:rollback
+	4. 	php artisan migrate:refresh
+	5. php artisan migrate:reset
+	6. php artisan make:migration add_field_name_to_table_name --table="tableName"
+		- Adding Column to a table
+		
+### Database Raw
+	1. DB::insert(query string)
+	2. DB::insert('insert into table_name(col1, col2 values(?,?))', ['value 1','Value 2']);
+	3. $results = DB::select('select * from posts where id = ?', [1]);
+	4. $update = DB::update('update posts set title = "Update title" where id = ?', [1]);
+	5. $delete = DB::delete('delete from posts where id = ?', [1]);
