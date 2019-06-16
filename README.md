@@ -62,3 +62,7 @@ Route::any('/', $callback);
 Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 ```
+**Optional Parameters**
+```
+Route::view('/welcome/{name?}', 'welcome');
+```
