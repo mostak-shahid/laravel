@@ -58,6 +58,15 @@ Route::options($uri, $callback);
 Route::match(['get', 'post'], '/', $callback);
 Route::any('/', $callback);
 ```
+**Naming**
+```
+Route::get('/about',array(
+	'as' => 'home.about',
+	'name' => 'home.about'
+	'uses'=> 'HomeController@about'
+));
+Route::get('/', $callback);
+```
 **View Routes**
 ```
 Route::view('/welcome', 'welcome');
