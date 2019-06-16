@@ -91,3 +91,22 @@ Route::view('/welcome/{name?}', 'welcome');
 	3. return view('welcome')->with('name', $value);
 	4. return view('welcome')->with(['foo' => 'Foobar','tasks' => ['Go to the store','Go to the market',],]);
 	5. return view('welcome')->withTasks($tasks)->withFoo('foo');
+	
+### Model
+**Location** App
+
+**Create** 
+
+	1. php artisan help make:model
+	2. php artisan make:model ModelName
+
+### Blade
+	1. Main 
+	```@yield('content')```
+	2. Child
+	```
+	@extends('layout')
+	@section('content')
+	<a href="/todos" class="btn-link">Visit my todos</a>
+	@stop or @endsection
+	```
