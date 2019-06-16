@@ -70,4 +70,21 @@ Route::view('/welcome/{name?}', 'welcome');
 ### Controllers
 **Location** App/Http/Controllers
 
-**Create** php artisan make:controller ControllerName
+**Create** 
+	1. php artisan help make:controller
+	2. php artisan make:controller ControllerName
+	3. php artisan make:controller --resource ControllerName 
+### View
+	1. return view('welcome');
+		- return welcome.blade.php from view directory
+	2. return view('admin.welcome');
+		- return welcome.blade.php from view/admin directory
+	3. return view('admin/welcome');
+		- return welcome.blade.php from view/admin directory
+		
+**Passing info to view**
+	1. return view('welcome',['tasks' => $tasks,'foo' => 'Foobar','request' => request('title'),'script' => '<script>alert("Foobar")</script>']);
+	2. return view('welcome', compact('id', 'name', 'password'));
+	3. return view('welcome')->with('name', $value);
+	4. return view('welcome')->with(['foo' => 'Foobar','tasks' => ['Go to the store','Go to the market',],]);
+	5. return view('welcome')->withTasks($tasks)->withFoo('foo');
