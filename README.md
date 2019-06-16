@@ -67,6 +67,6 @@ Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 ```
 Route::view('/welcome/{name?}', 'welcome');
 ```
-###Controllers
+### Controllers
 **Location** App/Http/Controllers
 **Create** php artisan make:controller ControllerName
