@@ -181,6 +181,9 @@ Post::destroy([4,5]);
 	- seeds
 	- middleware
 	- Provider
+	- Config Caching
+		- php artisan config:cache
+		- php artisan config:clear
 	- Route Caching
 		- php artisan route:cache
 		- php artisan route:clear
