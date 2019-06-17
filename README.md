@@ -115,6 +115,11 @@ Route::view('/welcome/{name?}', 'welcome');
 	1. php artisan help make:model
 	2. php artisan make:model ModelName
 
+**Hints**
+
+	1. Normally table name should be the plural of the model name, if no we should configure it by **protected table = 'table_name'** 
+	2. Normally the first column of the table should be id, if it not the we should configure it by **protected primaryKey = 'column_name'**
+
 ### Blade
 	1. Main (view/layout.blade.php)
 		- @yield('content')	

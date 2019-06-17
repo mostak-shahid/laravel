@@ -17,6 +17,7 @@ class ProjectTasksController extends Controller
     public function index()
     {
         //
+        $tasks = Task::all();
     }
 
     /**
