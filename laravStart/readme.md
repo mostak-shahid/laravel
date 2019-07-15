@@ -39,6 +39,8 @@
 - On Terminal type: npm install vue-router
 - [More Details](https://router.vuejs.org/)
 
+Lession : 6 https://www.youtube.com/watch?v=Gx93Bz62AII&list=PLB4AdipoHpxaHDLIaMdtro1eXnQtl_UvE&index=6
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
