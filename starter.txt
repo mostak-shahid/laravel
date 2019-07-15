@@ -1,0 +1,4 @@
+1. Multi level authentication system
+2. Blog system with category, tag, feature image options
+3. Page generation
+4. Debug with telescope
