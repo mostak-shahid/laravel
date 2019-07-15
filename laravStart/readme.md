@@ -38,6 +38,7 @@
 #### Install VUE
 - On Terminal type: npm install vue-router
 - [More Details](https://router.vuejs.org/)
+- Check app.js
 
 Lession : 6 https://www.youtube.com/watch?v=Gx93Bz62AII&list=PLB4AdipoHpxaHDLIaMdtro1eXnQtl_UvE&index=6
 
