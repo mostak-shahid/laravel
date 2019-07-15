@@ -1,6 +1,6 @@
-## Lecture 2
+
 #### Install NPM/NODE.JS
-- Download Node.js Windows Binary (.zip) (suppose you want to use Node.js version 10.5.0 64-bit):[from here](https://nodejs.org/dist/v10.5.0/node-v10.5.0-win-x64.zip)
+- Download Node.js Windows Binary (.zip) (suppose you want to use Node.js version 10.5.0 64-bit):[FROM HERE](https://nodejs.org/dist/v10.5.0/node-v10.5.0-win-x64.zip)
 - Extract the downloaded to: \bin\nodejs\node-vx.x.x
 - Close Laragon, then open it again (to refresh the Menu). Select the version at: Laragon Menu > Node.js > Version > node-vx.x.x
 - On Terminal type: npm --install
@@ -9,7 +9,23 @@
 #### Install AdminLte
 - On Terminal type: npm install admin-lte --save
 - On Terminal type: npm install admin-lte@v3.0.0-alpha.2 --save
+- Copy source code from \admin-lte\starter.html
+- Remove all css and js and link app.css and app.js
+- Open resources\js\bootstrap.js
+- Copy this require('bootstrap'); and rename bootstrap to admin-lte, you can find the name in package.json file
+- Open resources\scss\app.scss add @import '~admin-lte/dist/css/adminlte.min.css';
+- On Terminal type: npm
 
+#### Install Font Awesome
+- On Terminal type: npm install --save-dev @fortawesome/fontawesome-free
+- Open app.scss
+- After @import 'variables'; add $fa-font-path: "../webfonts";
+- @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+- @import '~@fortawesome/fontawesome-free/scss/regular.scss';
+- @import '~@fortawesome/fontawesome-free/scss/solid.scss';
+
+#### Information about user
+- {{ Auth::user()->name }}
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
