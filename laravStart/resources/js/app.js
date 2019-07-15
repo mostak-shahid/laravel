@@ -7,6 +7,18 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
+let routes = [
+    { path: '/dashboard', component: require('./components/Dashboard.vue').default },
+    { path: '/profile', component: require('./components/Profile.vue').default }
+]
+
+//noinspection JSAnnotator
+const router = new VueRouter({
+    routes // short for `routes: routes`
+})
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,6 +39,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 const app = new Vue({
-    el: '#app',
-});
+    router
+}).$mount('#app')

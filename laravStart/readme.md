@@ -1,3 +1,11 @@
+### Steps
+- Install npm
+- Install AdminLte
+- Install Font Awesome
+- Run Auth Command
+- Run Migrate Command
+- Setup the home page
+- Instgall VUE Router
 
 #### Install NPM/NODE.JS
 - Download Node.js Windows Binary (.zip) (suppose you want to use Node.js version 10.5.0 64-bit):[FROM HERE](https://nodejs.org/dist/v10.5.0/node-v10.5.0-win-x64.zip)
@@ -26,6 +34,10 @@
 
 #### Information about user
 - {{ Auth::user()->name }}
+
+#### Install VUE
+- On Terminal type: npm install vue-router
+- [More Details](https://router.vuejs.org/)
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
