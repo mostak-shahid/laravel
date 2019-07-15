@@ -3,7 +3,12 @@
 - Download Node.js Windows Binary (.zip) (suppose you want to use Node.js version 10.5.0 64-bit):[from here](https://nodejs.org/dist/v10.5.0/node-v10.5.0-win-x64.zip)
 - Extract the downloaded to: \bin\nodejs\node-vx.x.x
 - Close Laragon, then open it again (to refresh the Menu). Select the version at: Laragon Menu > Node.js > Version > node-vx.x.x
-- Now, open Terminal (Ctrl - Alt - T) and type: node --version (v10.5.0)/ npm --version (6.1.0)
+- On Terminal type: npm --install
+- On Terminal type: node --version (v10.5.0)/ npm --version (6.1.0)
+
+#### Install AdminLte
+- On Terminal type: npm install admin-lte --save
+- On Terminal type: npm install admin-lte@v3.0.0-alpha.2 --save
 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
